@@ -1,42 +1,41 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import AccordionItem from '../components/AccordionItem';
-import ImageModal from '../components/ImageModal';
-
-// Move the portfolioData here since it's only needed here now
-const getPlaceholder = (w, h, text) => `https://placehold.co/${w}x${h}/170d2b/F5E6D3?text=${encodeURIComponent(text)}`;
+import DocumentModal from '../components/DocumentModal';
 
 const portfolioData = {
-  designCollection: [
-    { title: 'Gilded dusk', info: 'Physical Garment - A stunning physical piece embodying the fading light of dusk with intricate gilded accents.', image: '/gilded_dusk.png' },
-    { title: 'Unraveled', info: 'Physical Garment - Deconstructed fashion taking inspiration from chaotic beauty.', image: '/unraveled.png' },
-    { title: 'Modern heiress', info: 'Physical Garment - Structured tailoring meets contemporary feminine power.', image: '/modern_heiress.png' },
-    { title: 'Echo of the grove', info: 'Physical Garment - Organic silhouettes derived from natural woodland motifs.', image: '/echo_grove.png' }
+  physicalGarment: [
+    { title: 'Gilded dusk', info: 'Physical Garment - A stunning physical piece embodying the fading light of dusk with intricate gilded accents.', pdf: '/pdfs/gilded_dusk.pdf' },
+    { title: 'Unraveled', info: 'Physical Garment - Deconstructed fashion taking inspiration from chaotic beauty.', pdf: '/pdfs/unraveled.pdf' },
+    { title: 'Vanarasi Vanguard', info: 'Physical Garment', pdf: '/pdfs/vanarasi_vanguard.pdf' },
+    { title: 'Cosmic cartographer', info: 'Physical Garment', pdf: '/pdfs/cosmic_cartographer.pdf' },
+    { title: 'Modern heiress', info: 'Physical Garment - Structured tailoring meets contemporary feminine power.', pdf: '/pdfs/modern_heiress.pdf' }
   ],
-  onlineCollection: [
-    { title: 'Everyday Art', info: 'Online Collection - Integrating conceptual art into daily wear.', image: '/everyday_art.png' },
-    { title: 'Swarn shristi', info: 'Online Collection - A digital translation of golden creation elements.', image: getPlaceholder(800, 1200, 'Swarn shristi') },
-    { title: 'Digital decay', info: 'Online Collection - Exploring the beauty of degradation in virtual spaces.', image: '/digital_decay.png' }
+  digitalCollection: [
+    { title: 'Everyday Art', info: 'Online Collection - Integrating conceptual art into daily wear.', pdf: '/pdfs/everyday_art.pdf' },
+    { title: 'Swarn Shristi', info: 'Online Collection - A digital translation of golden creation elements.', pdf: '/pdfs/swarn_shristi.pdf' },
+    { title: 'Digital Decay', info: 'Online Collection - Exploring the beauty of degradation in virtual spaces.', pdf: '/pdfs/digital_decay.pdf' }
   ],
   draping: [
-    { title: 'Cowl neck black dress', info: 'Intricate cowl draping highlighting the classic black silhouette.', image: '/cowl_black.png' },
-    { title: 'Bias cut dress', info: 'Smooth flowing bias cut demonstrating fabric mastery.', image: getPlaceholder(800, 1000, 'Bias Cut Dress') },
-    { title: 'Purple one shoulder dress', info: 'Asymmetrical draping in a vibrant purple hue.', image: '/purple_dress.png' }
+    { title: 'Black cowl neck dress', info: 'Intricate cowl draping highlighting the classic black silhouette.', pdf: '/pdfs/black_cowl_neck_dress.pdf' },
+    { title: 'Bais Cut dress', info: 'Smooth flowing bias cut demonstrating fabric mastery.', pdf: '/pdfs/bais_cut_dress.pdf' },
+    { title: 'Purple Dress', info: 'Asymmetrical draping in a vibrant purple hue.', pdf: '/pdfs/purple_dress.pdf' }
+  ],
+  brandDevelopment: [
+    { title: 'Finera', info: 'Brand Development', pdf: '/pdfs/finera.pdf' }
   ],
   garmentDocketing: [
-    { title: 'Off white', info: 'Detailed docketing technicals for an off-white ensemble.', image: getPlaceholder(800, 800, 'Off White Docketing') }
-  ],
-  fashionForecasting: [
-    { title: 'W', info: 'Trend forecasting collection analyzing the "W" demographic shifts.', image: getPlaceholder(800, 600, 'W Forecasting') }
+    { title: 'Off white', info: 'Detailed docketing technicals for an off-white ensemble.', pdf: '/pdfs/off_white.pdf' }
   ],
   illustrations: [
-    { title: 'Concept Sketches', info: 'Initial illustrations and concept art.', image: getPlaceholder(800, 800, 'Illustrations') }
+    { title: '6 illustrations', info: 'Collection of 6 illustrations', pdf: '/pdfs/6_illustrations.pdf' }
   ],
   extraWorks: [
-    { title: 'Textile Experiments', info: 'Explorations in fabric manipulation.', image: getPlaceholder(800, 800, 'Extra Works') }
-  ],
-  modeling: [
-    { title: 'Editorial Shoots', info: 'Photographic modeling portfolio.', image: getPlaceholder(800, 1200, 'Modeling') }
+    { title: 'Embroidery', info: 'Embroidery', pdf: '/pdfs/embroidery.pdf' },
+    { title: 'Surface Ornamentation', info: 'Surface Ornamentation', pdf: '/pdfs/surface_ornamentation.pdf' },
+    { title: 'Products', info: 'Products', pdf: '/pdfs/products.pdf' },
+    { title: 'Modelling', info: 'Modelling', pdf: '/pdfs/modelling.pdf' },
+    { title: 'Poster', info: 'Poster', pdf: '/pdfs/poster.pdf' }
   ]
 };
 
@@ -55,14 +54,20 @@ const sectionVariants = {
 };
 
 export default function Portfolio() {
-  const [modalImage, setModalImage] = useState(null);
+  const [modalPdf, setModalPdf] = useState(null);
+  const [pdfTitle, setPdfTitle] = useState('');
+
+  const handleOpenPdf = (pdfPath, title) => {
+    setModalPdf(pdfPath);
+    setPdfTitle(title);
+  };
 
   // Helper function to render a single section of accordions
   const renderSection = (title, items) => (
     <motion.section variants={sectionVariants} className="section-group">
       <h2 className="section-title">{title}</h2>
       {items.map((item, idx) => (
-        <AccordionItem key={idx} {...item} onImageClick={setModalImage} />
+        <AccordionItem key={idx} {...item} onPdfClick={handleOpenPdf} />
       ))}
     </motion.section>
   );
@@ -82,18 +87,18 @@ export default function Portfolio() {
         A curated collection of fashion design projects spanning multiple disciplines and styles.
       </motion.p>
 
-      {renderSection("Design Collection", portfolioData.designCollection)}
-      {renderSection("Online Collection", portfolioData.onlineCollection)}
+      {renderSection("Collection: Physical Garment", portfolioData.physicalGarment)}
+      {renderSection("Collection: Digital", portfolioData.digitalCollection)}
       {renderSection("Draping", portfolioData.draping)}
+      {renderSection("Brand Development", portfolioData.brandDevelopment)}
       {renderSection("Garment Docketing", portfolioData.garmentDocketing)}
-      {renderSection("Fashion Forecasting", portfolioData.fashionForecasting)}
       {renderSection("Illustrations", portfolioData.illustrations)}
       {renderSection("Extra Works", portfolioData.extraWorks)}
-      {renderSection("Modeling", portfolioData.modeling)}
 
-      <ImageModal 
-        currentImage={modalImage} 
-        onClose={() => setModalImage(null)} 
+      <DocumentModal 
+        currentPdf={modalPdf} 
+        pdfTitle={pdfTitle}
+        onClose={() => setModalPdf(null)} 
       />
     </motion.div>
   );

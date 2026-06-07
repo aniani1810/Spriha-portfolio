@@ -23,7 +23,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Concept Artist & Fashion Designer
+        Fashion Designer
         </motion.p>
         
         {/* Dynamic Image Grid for visual impact */}
@@ -34,24 +34,67 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.6 }}
         >
           <motion.img 
-            whileHover={{ scale: 1.05, rotate: -2 }}
-            src="/gilded_dusk.png" 
-            alt="Gilded Dusk Preview" 
+            whileHover={{ scale: 1.2, rotate: -2 }}
+            src="/photo 1.jpeg" 
+            alt="Design Illustration" 
             className="grid-image"
           />
           <motion.img 
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            src="/modern_heiress.png" 
-            alt="Modern Heiress Preview" 
+            whileHover={{ scale: 1.3, rotate: 2 }}
+            src="/photo 2.jpeg" 
+            alt="Spriha Portrait" 
             className="grid-image"
             style={{ marginTop: '40px' }} // staggered effect
           />
           <motion.img 
-            whileHover={{ scale: 1.05, rotate: -1 }}
-            src="/echo_grove.png" 
-            alt="Echo Grove Preview" 
+            whileHover={{ scale: 1.2, rotate: -2 }}
+            src="/photo 3.jpeg" 
+            alt="Design Illustration" 
             className="grid-image"
           />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ 
+            opacity: [0.5, 1, 0.5], 
+            y: [0, 10, 0] 
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 1.2
+          }}
+          style={{
+            marginTop: '100px',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            color: 'var(--text-secondary)'
+          }}
+          onClick={() => {
+            const aboutSection = document.querySelector('.about-section');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            style={{ opacity: 0.6 }}
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
         </motion.div>
       </div>
 
@@ -66,17 +109,19 @@ export default function Home() {
         <div className="about-content glass-panel" style={{ padding: '50px' }}>
           <div className="about-text">
             <p style={{ marginBottom: '20px' }}>
-              I am a conceptual artist and fashion designer exploring the intersection between physical reality and digital aesthetics. My work focuses on avant-garde silhouettes, deconstructed forms, and intricate draping.
+              Hii , I'm Spriha Singh,  a fashion designer dedicated to the elevation of Indian couture through meticulous surface ornamentation and artisanal craftsmanship. My design philosophy is centered on the belief that a garment’s soul is defined by its texture and the hand-skills used to create it.
             </p>
             <p>
-              Whether it's a structural masterpiece like the Modern Heiress suit or conceptual online collections like Digital Decay, my vision is to push the boundaries of modern fashion. 
-              I believe that every garment is a wearable piece of conceptual art, telling its own unique narrative through fabric manipulation, color theory, and radical form.
+              Beyond my focus on surface development, I bring a holistic understanding of the design process. My technical proficiency in the Adobe Creative Suite allows me to bridge the gap between hand-drawn artisanal concepts and precise digital execution. Having navigated the industry from multiple perspectives,from conceptualizing brand identities to experiencing the garment’s life on the runway, I possess a unique 360-degree view of how high-end fashion is built, presented, and perceived.
+            </p>
+            <p>
+I am driven by a commitment to slow fashion, heritage preservation, and the pursuit of uncompromising quality, aiming to contribute to a design house that values the intersection of history and modern innovation.
             </p>
           </div>
           <motion.img 
             whileHover={{ scale: 1.02, rotate: 1 }}
-            src="https://placehold.co/400x550/170d2b/F5E6D3?text=Spriha+Portrait" 
-            alt="Spriha Portrait mockup" 
+            src="/spriha_portrait.jpg" 
+            alt="Spriha Portrait" 
             className="about-image" 
           />
         </div>
