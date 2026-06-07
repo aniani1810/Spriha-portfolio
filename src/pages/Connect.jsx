@@ -183,7 +183,7 @@ export default function Connect() {
       >
         <a href="mailto:sprihasingh1204@gmail.com">Email</a>
         <a href="tel:8887895971">Phone</a>
-        <a href="www.linkedin.com/in/sprihasingh12" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sprihasingh12/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://www.behance.net/sprihasingh12" target="_blank" rel="noreferrer">Behance</a>
         <a href="https://www.instagram.com/spriha.s_diary?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer">Instagram</a>
       </motion.div>
