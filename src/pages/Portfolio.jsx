@@ -13,7 +13,7 @@ const portfolioData = {
   ],
   digitalCollection: [
     { title: 'Everyday Art', info: 'Online Collection - Integrating conceptual art into daily wear.', pdf: '/pdfs/everyday_art.pdf' },
-    { title: 'Swarn Shristi', info: 'Online Collection - A digital translation of golden creation elements.', pdf: '/pdfs/swarn_shristi.pdf' },
+    { title: 'Suvarna Shristi', info: 'Online Collection - A digital translation of golden creation elements.', pdf: '/pdfs/swarn_shristi.pdf' },
     { title: 'Digital Decay', info: 'Online Collection - Exploring the beauty of degradation in virtual spaces.', pdf: '/pdfs/digital_decay.pdf' }
   ],
   draping: [
@@ -28,7 +28,7 @@ const portfolioData = {
     { title: 'Off white', info: 'Detailed docketing technicals for an off-white ensemble.', pdf: '/pdfs/off_white.pdf' }
   ],
   illustrations: [
-    { title: '6 illustrations', info: 'Collection of 6 illustrations', pdf: '/pdfs/6_illustrations.pdf' }
+    { title: 'Illustrations', info: 'Collection of illustrations', pdf: '/pdfs/6_illustrations.pdf' }
   ],
   extraWorks: [
     { title: 'Embroidery', info: 'Embroidery', pdf: '/pdfs/embroidery.pdf' },
