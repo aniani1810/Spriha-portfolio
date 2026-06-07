@@ -47,7 +47,7 @@ export default function Connect() {
       <h2 className="section-title">Let's Connect</h2>
       
       <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '40px', maxWidth: '600px' }}>
-        Interested in collaboration, custom concepts, or editorial shoots? 
+        Interested in bringing me onto the team? 
         Leave a message below or reach out directly through my social channels.
       </p>
 
